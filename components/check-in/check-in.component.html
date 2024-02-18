@@ -1,0 +1,153 @@
+<ion-header>
+	<ion-toolbar>
+		<ion-buttons slot="start">
+			<ion-button (click)="dismiss()" class="body-small back-button ion-padding-start"><u>Cancel</u></ion-button>
+		</ion-buttons>
+		<ion-title class="sub-title-header">Check-in</ion-title>
+		<ion-buttons slot="primary">
+			<ion-button (click)="createCheckIn()" class="primary-button body-small ion-padding-end">Save</ion-button>
+		</ion-buttons>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content>
+	<ion-grid style="margin: 10px;">
+		<ion-row class="search-location">
+			<ion-col size="2" class="vertical-center">
+				<ion-icon name="search"></ion-icon>
+			</ion-col>
+			<ion-col size="10" sizeMd="6">
+				<input class="font-14 mt-5 pt-5 ml-10 width85 input-padding addressinput" placeholder="Place of work"
+					ngx-google-places-autocomplete [options]='options' #placesRef="ngx-places"
+					(onAddressChange)="handlePlacesOfWork($event)" [(ngModel)]="selected_location">
+			</ion-col>
+		</ion-row>
+		<div class="error-message">{{errorMsg}}</div>
+	</ion-grid>
+
+	<div class="container-div">
+		<div class="horizontal-line"></div>
+
+		<ion-row class="top-margin">
+			<ion-col size="12" class="button-text">
+				<span>{{constants.saved_places}}</span>
+			</ion-col>
+		</ion-row>
+		<ng-container *ngIf="placesOfWork && placesOfWork.length !== 0">
+			<ion-row (click)="selectCheckInPlace(place)" *ngFor="let place of placesOfWork"
+				class="card-background top-margin">
+				<ion-col size="12">
+					<div class="body-text">
+						{{place.name}}
+					</div>
+					<div class="ellipses-style body-small-regular">
+						{{place.formatted_address}}
+					</div>
+				</ion-col>
+			</ion-row>
+		</ng-container>
+
+
+		<ng-container *ngIf="selected_location != ''">
+			<div class="horizontal-line top-margin"></div>
+			<ion-row>
+				<ion-col size="12">
+					<span class="button-text">Selected location: </span>
+					<span class="body-small-regular">{{selected_location}}</span>
+				</ion-col>
+			</ion-row>
+		</ng-container>
+
+		<ion-row class="no_data" *ngIf="placesOfWork && placesOfWork.length == 0">
+			<ion-col size="12">
+				<span>NO DATA AVAILABLE</span>
+			</ion-col>
+		</ion-row>
+
+		<div class="horizontal-line top-margin"></div>
+
+		<!-- <ion-row *ngIf="entryPoint == 'checkin'" class="top-margin">
+			<ion-col size="12" class="button-text">
+				<span>{{constants.checkout_time}}</span>
+			</ion-col>
+		</ion-row> -->
+		<ion-row *ngIf="entryPoint == 'checkin'" class="card-background top-margin">
+
+			<ion-col size="4" class="button-text vertical-center">
+				<span>Checkout After</span>
+			</ion-col>
+			<ion-col size="8">
+				<!-- <ion-row>
+					<ion-col size="3" *ngFor="let hour of hoursArray">
+						<ion-button *ngIf="hour != 'other'" (click)="selectedCheckoutAfter(hour)"
+							[color]="showOtherInput == hour ? 'primary' : 'light'"
+							class="button-text button-width-100">{{hour}} Hours</ion-button>
+						<ion-button *ngIf="hour == 'other'" (click)="selectedCheckoutAfter(hour)"
+							[color]="showOtherInput == hour ? 'primary' : 'light'"
+							class="button-text button-width-100">{{hour}}</ion-button>
+					</ion-col>
+				</ion-row> -->
+
+				<ion-row>
+					<ion-col size="12">
+						<ion-item lines="none" class="item-for-ionselect">
+							<ion-select interface="popover" placeholder="Checkout After (in hours)"
+								[interfaceOptions]="{'cssClass': 'service-popover-select'}" class="hour-ion-select"
+								[(ngModel)]="showOtherInput" (ngModelChange)="selectedCheckoutAfter(showOtherInput)">
+								<ion-select-option *ngFor="let hour of hoursArray" [value]="hour">
+									
+									<span *ngIf="hour == 'other'">{{hour}}</span>
+									<span *ngIf="hour !== 'other'">{{hour}} Hours</span>
+								</ion-select-option>
+							</ion-select>
+						</ion-item>
+					</ion-col>
+				</ion-row>
+			</ion-col>
+
+			<ion-col size="4">
+				
+			</ion-col>
+			<ion-col size="8">
+				<ion-row *ngIf="showOtherInput == 'other'" class="other-input-border">
+					<ion-col size="12">
+						<ion-input placeholder="Please enter hours" type="number" class="button-text button-width-100 hour-input"
+							[(ngModel)]="enteredCheckoutAfter"></ion-input>
+					</ion-col>
+				</ion-row>
+			</ion-col>
+			<!-- <ion-col size="12">
+				<div class="ellipses-style body-small-regular">
+					<ion-datetime [min]="currentDate" (ionChange)="setDate($event)"
+					presentation="date-time" [preferWheel]="true"></ion-datetime>
+				</div>
+			</ion-col> -->
+		</ion-row>
+
+	</div>
+
+	<ion-row>
+		<ion-col *ngFor="let url of mediaUrl" size="4">
+			<ion-img [src]="url"></ion-img>
+		</ion-col>
+	</ion-row>
+
+</ion-content>
+
+<ion-footer class="footer-post" *ngIf="entryPoint == 'checkin'">
+	<ion-list class="post-actions">
+		<ion-item (click)="uploadFromCamera()">
+			<ion-icon name="camera-outline"></ion-icon>
+			<ion-label>Upload</ion-label>
+		</ion-item>
+		<!-- <ion-item>
+			<ion-icon name="videocam-outline"></ion-icon>
+			<ion-label>Gallery</ion-label>
+		</ion-item> -->
+	</ion-list>
+
+	<ion-input class="UploadButton ft_button font-14" type="file" (change)="uploadFile($event)"
+		class="custom-file-input" style="visibility: hidden;margin: 4px;padding: 1px;width:50%;" id="uploadFile"
+		#fileUpload multiple="true">
+	</ion-input>
+</ion-footer>

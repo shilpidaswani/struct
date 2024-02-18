@@ -1,0 +1,28 @@
+<ion-header>
+	<ion-toolbar>
+		<ion-buttons slot="start">
+			<ion-button (click)="dismissModal()" class="body-small back-button"><u>BACK</u>
+			</ion-button>
+		</ion-buttons>
+		<ion-title class="sub-title-header ion-text-center">{{constants.delete_account}}</ion-title>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content>
+	<ion-card class="ion-card-container">
+		<ion-label class="body-text otp-note">
+			{{constants.verify_otp_delete}}
+		</ion-label>
+		<div class="ion-padding ion-text-center">
+			<ion-button (click)="getOtp()" color="primary" class="primary-button button-text delete_button">{{constants.get_otp}}
+			</ion-button>
+		</div>
+		<ion-grid class="no-padding delete-card-content">
+			<ion-row>
+				<ion-col class="body-small-regular">
+					{{constants.restore_deleted_account}}
+				</ion-col>
+			</ion-row>
+		</ion-grid>
+	</ion-card>
+</ion-content>

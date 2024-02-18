@@ -1,0 +1,92 @@
+<ion-header>
+	<ion-toolbar>
+		<ion-buttons slot="start">
+			<ion-button (click)="dismiss()" class="body-small back-button ion-padding-start"><u>Cancel</u></ion-button>
+		</ion-buttons>
+		<ion-title class="sub-title-header">Tip</ion-title>
+		<ion-buttons slot="primary">
+			<!-- <ion-button (click)="createCheckIn()" class="primary-button body-small ion-padding-end">Post</ion-button> -->
+		</ion-buttons>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+	<div class="margin-div">
+		<ion-row>
+			<ion-col size="12">
+				<div class="button-text">Choose Tip Amount</div>
+			</ion-col>
+		</ion-row>
+	
+		<ion-row>
+			<ion-col size="3" *ngFor="let amt of amounts">
+				<ion-button (click)="selectTipAmount(amt)" [color]="showOtherInput == amt ? 'primary' : 'light'" class="button-text button-width-100">${{amt}}</ion-button>
+			</ion-col>
+		</ion-row>
+	
+		<ion-row *ngIf="showOtherInput == 'Other'" class="other-input-border">
+			<ion-col size="2" class="vertical-center-end">
+				<span>$</span>
+			</ion-col>
+			<ion-col size="10">
+				<ion-input class="button-text button-width-100" [(ngModel)]="tipAmount"></ion-input>
+			</ion-col>
+		</ion-row>
+	</div>
+
+	<div class="total-tip-div">
+		<ion-row>
+			<ion-col size="12">
+				<div class="button-text">Total Tip</div>
+			</ion-col>
+		</ion-row>
+	
+		<ion-row>
+			<ion-col size="12">
+				<div class="sub-title-header">$&nbsp;&nbsp;{{tipAmount}}&nbsp;&nbsp;USD</div>
+			</ion-col>
+		</ion-row>
+	</div>
+
+	<div class="total-tip-div">
+		<ion-row>
+			<ion-col size="12">
+				<div class="button-text">Shoutout</div>
+			</ion-col>
+		</ion-row>
+	
+		<ion-row>
+			<ion-col size="12">
+				<ion-input class="button-text button-width-100" placeholder="Enter your message" [(ngModel)]="shoutout"></ion-input>
+			</ion-col>
+		</ion-row>
+	</div>
+
+	<div class="total-tip-div">
+		<ion-row>
+			<ion-col size="12">
+				<div class="button-text">Select Payment Method</div>
+			</ion-col>
+		</ion-row>
+	
+		<ion-row>
+			<ion-col size="12">
+				<div id="paypal-button-container">
+	
+				</div>
+			</ion-col>
+		</ion-row>
+	</div>
+</ion-content>
+
+<!-- <ion-footer class="font-color-black">
+
+	<ion-row>
+		<ion-col size="12">
+			<ion-button color="primary" class="primary-button button-text button-width-100 button-profile"
+							(click)="makePayment()">
+							Proceed To Payment</ion-button>
+		</ion-col>
+	</ion-row>
+</ion-footer> -->

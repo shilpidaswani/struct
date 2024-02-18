@@ -1,0 +1,57 @@
+<ion-header>
+	<ion-toolbar>
+		<ion-buttons slot="start">
+			<ion-button (click)="dismissModal()" class="back-button ion-padding-start"><u>BACK</u></ion-button>
+		</ion-buttons>
+		<ion-title class="sub-title-header ion-text-center">Account</ion-title>
+		<ion-buttons slot="primary">
+			<!-- <ion-button (click)="onUpdate()" class="save-button ion-padding-end"><u>SAVE</u></ion-button> -->
+		</ion-buttons>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content>
+	<ion-card class="ion-card-container">
+		<ion-label class="body-small info-label"> Personal information </ion-label>
+		<form [formGroup]="form">
+			<ion-grid>
+				<ion-row>
+					<ion-col>
+						<ion-label position="floating" class="header3">Name</ion-label>
+						<ion-item size-sm="6" offset-sm="3" lines="none" class="input-border">
+							<ion-input class="body-small" [readonly]="true" type="text" autocorrect
+								autocomplete formControlName="name">{{profiledata?.name}}</ion-input>
+						</ion-item>
+					</ion-col>
+				</ion-row>
+				<ion-row class="margin-between">
+					<ion-col>
+						<ion-label position="floating" class="header3">Email</ion-label>
+						<ion-item size-sm="6" offset-sm="3" lines="none" class="input-border">
+							<ion-input class="body-small" [readonly]="true" rows="3" formControlName="email">{{profiledata?.email}}
+							</ion-input>
+						</ion-item>
+					</ion-col>
+				</ion-row>
+				<ion-row class="margin-between">
+					<ion-col>
+						<ion-label position="floating" class="header3">Phone</ion-label>
+						<ion-item size-sm="6" offset-sm="3" lines="none" class="input-border">
+							<ion-input class="body-small" [readonly]="true" type="number" autocorrect autocomplete
+								formControlName="phone">{{profiledata?.phone}}</ion-input>
+						</ion-item>
+					</ion-col>
+				</ion-row>
+				<ion-row class="margin-between">
+					<ion-col>
+						<ion-label position="floating" class="header3">Account type</ion-label>
+						<ion-item size-sm="6" offset-sm="3" lines="none" class="input-border">
+							<ion-input class="body-small" [readonly]="true" type="text" autocorrect
+								autocomplete formControlName="accountType">{{profiledata?.accountType}}</ion-input>
+						</ion-item>
+					</ion-col>
+				</ion-row>
+			</ion-grid>
+		</form>
+	</ion-card>
+</ion-content>

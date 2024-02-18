@@ -1,0 +1,137 @@
+<ion-header>
+	<ion-toolbar>
+		<ion-buttons slot="start">
+			<ion-back-button class="ion-back-button" (click)="cancel()"></ion-back-button>
+		</ion-buttons>
+		<ion-title class="sub-title-header">{{
+			singleFeed?.account?.name
+			}}</ion-title>
+		<!-- <ion-buttons slot="end">
+      <ion-button (click)="confirm()">Confirm</ion-button>
+    </ion-buttons> -->
+	</ion-toolbar>
+</ion-header>
+<ion-content scrollY="true">
+	<!-- <ion-grid class="main-grid"
+		[ngStyle]="comments && comments.length < 3 && comments.length > 1 ? {'height': '60%'}:{'height':'85%'}"> -->
+	<ion-row class="">
+		<ion-col>
+			<div class="feed-images" *ngIf="singleFeed?.mediaURL.length != 0;">
+				<ion-slides pager="true" [options]="slideOpts">
+					<ion-slide class="image-container" *ngFor="let url of singleFeed?.mediaURL">
+						<ion-img (click)="openImage(url)" class="image-slide" [src]="url"></ion-img>
+					</ion-slide>
+				</ion-slides>
+			</div>
+		</ion-col>
+	</ion-row>
+
+	<ion-row>
+		<ion-col>
+			<div>
+				<span class="body-text">{{ singleFeed?.description }}</span>
+			</div>
+		</ion-col>
+	</ion-row>
+	<ion-row>
+		<ion-col size="2">
+			<ion-button class="like-comment-button" fill="clear" [ngClass]="{
+					'location-without-images': singleFeed?.mediaURL.length == 0,
+					'like-comment-button-with-images': singleFeed?.mediaURL.length !== 0
+				  }">
+				<ion-icon class="icon-like-comment" name="heart"></ion-icon>
+				<span class="margin-left-count countStyle">{{ singleFeed?.likeCount }}</span>
+			</ion-button>
+		</ion-col>
+
+		<ion-col size="2">
+			<ion-button fill="clear" class="like-comment-button" [ngClass]="{
+					'location-without-images': singleFeed?.mediaURL.length == 0,
+					'like-comment-button-with-images': singleFeed?.mediaURL.length !== 0
+				  }">
+				<ion-icon class="icon-like-comment" name="chatbubble"></ion-icon>
+				<span class="margin-left-count countStyle">{{ singleFeed?.commentCount }}</span>
+			</ion-button>
+		</ion-col>
+	</ion-row>
+	<ion-row class="">
+		<!-- <ion-row *ngIf="comments.length==0">
+			<div>No comments</div>
+		</ion-row> -->
+
+		<ion-row class="no_data button-width-100" *ngIf="comments.length == 0">
+			<ion-col size="12">
+				<span>NO COMMENTS</span>
+			</ion-col>
+		</ion-row>
+		<ion-row class="button-width-100" *ngFor="let comment of comments.slice(0,count)">
+			<ion-col size="2">
+				<ion-avatar class="auto-margin">
+					<ion-img class=""
+						[src]="comment?.account?.profilePic && comment?.account?.profilePic != '' ? comment?.account?.profilePic : '../../../assets/images/landing-image.jpeg'"></ion-img>
+				</ion-avatar>
+			</ion-col>
+			<ion-col size="10">
+				<ion-row>
+					<ion-col size="12" class="ion-text-start">
+						<div>
+							<span class="header3">
+								{{ comment.account?.name ? comment.account.name : "John Doe" }}
+							</span>
+							<span *ngIf="!comment.showMore" class="body-small-regular-date ion-text-wrap">
+								{{ trimString(comment?.comment, 20) }}
+							</span>
+							<span *ngIf="comment.showMore" class="body-small-regular-date ion-text-wrap">
+								{{ comment?.comment }}
+							</span>
+							<a *ngIf="comment?.comment.length > 60" class="body-small-regular-date"
+								(click)="comment.showMore = !comment.showMore">Show
+								<span [innerHtml]="comment.showMore ? 'less' : 'More'">
+								</span>
+							</a>
+						</div>
+					</ion-col>
+				</ion-row>
+				<ion-row class="">
+					<ion-col size="12" class="comment-timeAgo">
+						<span style="font-size: 10px; display: flex">{{
+							comment.createdAt | dateAgo
+							}}</span>
+					</ion-col>
+				</ion-row>
+			</ion-col>
+		</ion-row>
+		<ion-row *ngIf="comments.length>4" class="body-small-regular-date" (click)="addCount(count)">
+			<a> {{count
+				<=comments.length-1? 'view more comments' :'view less '}}</a>
+    	</ion-row> 
+    </ion-row>
+    <!-- <ion-row class="no_comments" *ngIf="comments.length==0">
+      <div>No comments</div>
+
+    </ion-row> -->
+   
+
+		<!-- </ion-grid> -->
+</ion-content>
+
+<ion-footer>
+	<form [formGroup]="commentForm" (ngSubmit)="getInputData()">
+		<ion-row class="ion-justify-content-center">
+			<ion-col size="2">
+				<ion-avatar>
+					<ion-img class="" [src]="profilePic"></ion-img>
+				</ion-avatar>
+			</ion-col>
+			<ion-col class="comment-col" size="8">
+				<ion-textarea formControlName="commentText" [autoGrow]="true" [rows]="1" [ngClass]="{'
+					errorCLass':!commentForm.get('commentText').valid && commentForm.get('commentText').touched}"
+					class="custom-text-area">
+				</ion-textarea>
+			</ion-col>
+			<ion-col class="comment-col" size="2">
+				<ion-button [disabled]="!commentForm.valid" type="submit" class="post-button">POST</ion-button>
+			</ion-col>
+		</ion-row>
+		</form>
+		</ion-footer>

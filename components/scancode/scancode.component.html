@@ -1,0 +1,52 @@
+<ion-header>
+	<ion-toolbar>
+		<ion-buttons slot="start">
+			<ion-button (click)="dismiss()" class="body-small back-button ion-padding-start"><u>Cancel</u></ion-button>
+		</ion-buttons>
+		<ion-title class="sub-title-header">Scan QR</ion-title>
+		<ion-buttons slot="primary">
+			<!-- <ion-button (click)="createCheckIn()" class="primary-button body-small ion-padding-end">Post</ion-button> -->
+		</ion-buttons>
+	</ion-toolbar>
+</ion-header>
+
+
+<ion-content [style.--background]="scanActive?'transparent':'#fff'">
+	<ion-button expand="full" (click)="startScanner()" [hidden]="scanActive">
+		SCAN
+	</ion-button>
+	<ion-row class="scan-button" [hidden]="!scanActive">
+		<ion-col class="ion-no-padding">
+			<ion-button expand="full" (click)="stopScanner()">Stop</ion-button>
+		</ion-col>
+	</ion-row>
+	<div class="scan-box" [hidden]="!scanActive"></div>
+</ion-content>
+
+<!-- <ion-content>
+
+	<ion-row>
+		<ion-col size="12">
+			<ion-button expand="full" (click)="startScanner()" [hidden]="scanActive">
+				SCAN
+			</ion-button>
+			<ion-row class="scan-button" [hidden]="!scanActive">
+				<ion-col class="ion-no-padding">
+					<ion-button expand="full" (click)="stopScanner()">Stop</ion-button>
+				</ion-col>
+			</ion-row>
+			<div class="scan-box" [hidden]="!scanActive"></div>
+		</ion-col>
+	</ion-row>
+</ion-content> -->
+
+<!-- <ion-footer class="font-color-black">
+
+	<ion-row>
+		<ion-col size="12">
+			<ion-button color="primary" class="primary-button button-text button-width-100 button-profile"
+							(click)="makePayment()">
+							Proceed To Payment</ion-button>
+		</ion-col>
+	</ion-row>
+</ion-footer> -->

@@ -1,0 +1,38 @@
+app-account{
+   .save-button{
+       color:#6D2F8E;
+        float: right;
+        font-family: 'Poppins-Bold' !important;
+    font-size: 10px !important;
+    }
+
+    .back-button {
+		--color: #5D5D5D;
+		text-decoration: underline;
+        font-family: 'Poppins-Bold' !important;
+        font-size: 10px !important;
+	}
+    .info-label{
+        color: #000000;
+        display: flex;
+        padding: 10px;
+    }
+
+    .ion-card-container{
+        margin: 10px;
+        height: 100%;
+    }
+}
+
+.input-border {
+    border: 1.5px solid #A5A5A5;
+    margin-top: 10px;
+
+    ion-input {
+        color: #000000;
+    }
+}
+
+.margin-between {
+    margin-top: 15px;
+}

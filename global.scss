@@ -1,0 +1,452 @@
+/*
+ * App Global CSS
+ * ----------------------------------------------------------------------------
+ * Put style rules here that you want to apply globally. These styles are for
+ * the entire app and not just one component. Additionally, this file can be
+ * used as an entry point to import other CSS/Sass files to be included in the
+ * output CSS.
+ * For more information on global stylesheets, visit the documentation:
+ * https://ionicframework.com/docs/layout/global-stylesheets
+ */
+
+/* Core CSS required for Ionic components to work properly */
+@import "~@ionic/angular/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+@import "~@ionic/angular/css/normalize.css";
+@import "~@ionic/angular/css/structure.css";
+@import "~@ionic/angular/css/typography.css";
+@import '~@ionic/angular/css/display.css';
+
+/* Optional CSS utils that can be commented out */
+@import "~@ionic/angular/css/padding.css";
+@import "~@ionic/angular/css/float-elements.css";
+@import "~@ionic/angular/css/text-alignment.css";
+@import "~@ionic/angular/css/text-transformation.css";
+@import "~@ionic/angular/css/flex-utils.css";
+
+$primary-color: #3C096C;
+$secondary-color: #C0A5D9;
+$tertiary-color: #F0E6F7;
+$light-background: #FAF7FF;
+$light-gray-cta: #F6F6F6;
+$secondary-cta-gray: #8E8E8E;
+$primary-cta-gray: #1F1F1F;
+$black: #000000;
+$white: #FFFFFF;
+
+//Adding custom color
+.ion-color-textcolor {
+    --ion-color-base: var(--ion-color-textcolor);
+    --ion-color-base-rgb: var(--ion-color-textcolor-rgb);
+    --ion-color-contrast: var(--ion-color-textcolor-contrast);
+    --ion-color-contrast-rgb: var(--ion-color-textcolor-contrast-rgb);
+    --ion-color-shade: var(--ion-color-textcolor-shade);
+    --ion-color-tint: var(--ion-color-textcolor-tint);
+}
+
+.ion-color-whitecolor {
+    --ion-color-base: var(--ion-color-whitecolor);
+    --ion-color-base-rgb: var(--ion-color-whitecolor-rgb);
+    --ion-color-contrast: var(--ion-color-whitecolor-contrast);
+    --ion-color-contrast-rgb: var(--ion-color-whitecolor-contrast-rgb);
+    --ion-color-shade: var(--ion-color-whitecolor-shade);
+    --ion-color-tint: var(--ion-color-whitecolor-tint);
+}
+
+.ion-color-regularstext {
+    --ion-color-base: var(--ion-color-regularstext);
+    --ion-color-base-rgb: var(--ion-color-regularstext-rgb);
+    --ion-color-contrast: var(--ion-color-regularstext-contrast);
+    --ion-color-contrast-rgb: var(--ion-color-regularstext-contrast-rgb);
+    --ion-color-shade: var(--ion-color-regularstext-shade);
+    --ion-color-tint: var(--ion-color-regularstext-tint);
+}
+
+//Fonts - Poppins
+@font-face {
+    font-family: Poppins-SemiBold;
+    src: url('./assets/font/poppins/Poppins-SemiBold.ttf');
+}
+
+@font-face {
+    font-family: Poppins-Bold;
+    src: url('./assets/font/poppins/Poppins-Bold.ttf');
+}
+
+@font-face {
+    font-family: Poppins-Regular;
+    src: url('./assets/font/poppins/Poppins-Regular.ttf');
+}
+
+@font-face {
+    font-family: DunbarLow-Regular;
+    src: url('./assets/font/dunbar/DunbarLow-Regular.ttf');
+}
+
+:root {
+    --ion-font-family: 'Poppins-Regular';
+}
+
+.header1 {
+    font-family: 'Poppins-SemiBold';
+    font-size: 30px;
+}
+
+.header-name {
+    font-family: 'Poppins-SemiBold';
+    font-size: 24px;
+}
+
+.header2 {
+    font-family: 'Poppins-Bold';
+    font-size: 20px;
+}
+
+.header3 {
+    font-family: 'Poppins-Bold';
+    font-size: 14px;
+}
+
+.sub-title {
+    font-family: 'Poppins-SemiBold';
+    font-size: 16px;
+}
+
+.sub-title-header {
+    font-family: 'Poppins-Bold';
+    font-size: 16px;
+}
+
+.card-text {
+    font-family: 'Poppins-Bold';
+    font-size: 14px;
+    color: #1F1F1F;
+}
+
+.card-text-small {
+    font-family: 'Poppins-Regular';
+    font-size: 14px;
+    color: #1F1F1F;
+}
+
+.body-text {
+    font-family: 'Poppins-Regular';
+    font-size: 16px;
+}
+
+.body-text-small {
+    font-family: 'Poppins-Regular';
+    font-size: 14px;
+}
+
+.body-small {
+    font-family: 'Poppins-Bold' !important;
+    font-size: 12px !important;
+}
+
+.body-small-regular {
+    font-family: 'Poppins-Regular' !important;
+    font-size: 12px !important;
+}
+
+.body-small-regular-date {
+    font-family: 'Poppins-Regular' !important;
+    font-size: 12px !important;
+}
+
+.button-text {
+    font-family: 'Poppins-SemiBold';
+    font-size: 12px;
+    text-transform: uppercase;
+}
+
+.text-with-underline {
+    font-family: 'Poppins-SemiBold';
+    font-size: 12px;
+    text-transform: uppercase;
+    text-decoration: underline;
+}
+
+.custom-loader {
+    --spinner-color: grey;
+    color: grey;
+}
+
+.app-title {
+    font-family: "DunbarLow-Regular";
+    font-size: 47px;
+    text-align: center;
+}
+
+.app-subtitle {
+    font-family: "DunbarLow-Regular";
+    font-size: 26px;
+    text-align: left;
+    color: #3C096C;
+}
+
+.vertical-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.vertical-center-start {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+}
+
+.vertical-bottom {
+    display: flex;
+    align-items: end;
+    justify-content: center;
+}
+
+.vertical-center-end {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+}
+
+.primary-button {
+    --background: #{$primary-color};
+    --background-hover: #{$primary-color};
+    --background-activated: #{$primary-color};
+    --background-focused: #{$primary-color};
+    --color: #{$white};
+    --border-radius: 5px;
+    --border-color: #{$primary-color};
+    --border-style: solid;
+    --border-width: 1px;
+    // --box-shadow: 0 2px 6px 0 rgb(0, 0, 0, 0.25);
+    --padding-top: 20px;
+    --padding-bottom: 20px;
+    text-transform: uppercase;
+}
+
+.secondary-button {
+    --background: #{$white};
+    --background-hover: #{$white};
+    --background-activated: #{$white};
+    --background-focused: #{$white};
+    --color: #{$primary-color};
+    --border-radius: 5px;
+    --border-color: #{$primary-color};
+    --border-style: solid;
+    --border-width: 1px;
+    // --box-shadow: 0 2px 6px 0 rgb(0, 0, 0, 0.25);
+    --padding-top: 20px;
+    --padding-bottom: 20px;
+}
+
+.type-three-button {
+    --background: #{$white};
+    --background-hover: #{$white};
+    --background-activated: #{$white};
+    --background-focused: #{$white};
+    --color: #{$primary-color};
+    --padding-top: 20px;
+    --padding-bottom: 20px;
+}
+
+.text-left {
+    text-align: start;
+}
+
+.text-right {
+    text-align: end;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.input-style {
+    border: 2px solid $primary-color;
+}
+
+.form-label {
+    color: $primary-color;
+    margin-left: 20px;
+}
+
+.underline-text {
+    text-decoration: underline;
+}
+
+.margin-auto {
+    margin: 0 auto !important;
+}
+ion-toast::part(container) {
+    background-color: #ffffff !important;
+  }
+.toast-regulars {
+    background-color: rgb(0 0 0 / 57%);
+    color: #3C096C;
+    --width: 70%;
+    text-align: center;
+
+    .checkmark-icon {
+        width: 30px;
+        height: 30px;
+        margin-bottom: 20px;
+    }
+}
+
+.profile_title {
+    font-family: 'Poppins-Bold';
+    font-size: 24px;
+    color: #000000
+}
+
+.button-width-100 {
+    width: 100%;
+}
+
+.auto-margin {
+    margin: 0 auto;
+}
+
+ion-card {
+    margin: 5px !important;
+}
+
+ion-card-content {
+    padding: 10px !important;
+}
+
+ion-back-button {
+    display: block;
+    padding: 0px !important;
+}
+
+.error-message {
+    font-size: 12px;
+    color: #B81212;
+}
+
+.service-popover-select {
+    --width: 280px;
+    --max-width: 280px;
+}
+
+.no_data {
+    height: 400px;
+
+    ion-col {
+        text-align: center;
+        margin: auto 0;
+    }
+}
+
+.coming_soon_img {
+    width: 200px;
+    height: 200px;
+    margin: 0 auto;
+}
+
+.go_back {
+    color: #3C096C;
+    padding-left: 0px !important;
+}
+
+.feed-images {
+    margin-top: 5px;
+
+    .swiper-pagination {
+        // position: relative !important;
+        // margin-top: 20px !important;
+        --bullet-background: #C0A5D9;
+        --bullet-background-active: white;
+    }
+}
+
+.like-comment-button {
+    color: white;
+    --padding-start: 0px;
+    height: 30px;
+}
+.scehdule-like-btn{
+    // --background: #3c096c ;
+    color: white !important ;
+  }
+
+.like-comment-button-with-images {
+    color: #3C096C;
+}
+
+.back-button {
+    font-family: 'Poppins-Bold' !important;
+    font-size: 10px !important;
+}
+
+.swiper-slide img {
+    width: auto;
+    max-width: 100%;
+    height: 100% !important;
+    max-height: 100%;
+}
+
+.ellipses-style {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.select-interface-option .alert-button-inner .alert-radio-label {
+    white-space: pre-line;
+}
+
+ion-toolbar {
+    --background: white;
+}
+
+ion-datetime-button::part(native) {
+    width: 100px;
+    background: none !important;
+}
+
+.dateTime-modal {
+    .ion-page {
+        ion-content {
+            :host {
+                .calendar-day {
+                    border-radius: 0 !important;
+                }
+            }
+        }
+    }
+}
+
+ion-datetime {
+    // background: #ffffff;
+    // --ion-color-step-650: #ffffff;
+    // --ion-color-step-500: #ffffff;
+    color: #3C096C;
+    --ion-color-contrast: #ffffff !important;
+    --ion-color-base: #9a55d9 !important;
+}
+
+:host .calendar-action-buttons ion-item ion-label {
+    color: white !important;
+}
+
+
+//QR code style
+.bshadow {
+
+    width: 100%;
+
+    img {
+        width: 100%;
+    }
+
+}
+
+body.scanner-active {
+    --background: transparent;
+    --ion-background-color: transparent;
+    background-color: transparent;
+}
